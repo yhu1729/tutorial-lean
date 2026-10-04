@@ -1,0 +1,27 @@
+name = "tutorial-lean"
+version = "0.1.0"
+defaultTargets = ["Tutorial", "Exercise", "Solution"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "v4.34.1"
+
+# Lessons: literate files, read these first. Every output is pinned, so a warning
+# here is a lesson that drifted from Lean; it fails the build.
+[[lean_lib]]
+name = "Tutorial"
+leanOptions = { warningAsError = true }
+
+# Your workspace: stubs with `sorry`; warnings are expected here.
+[[lean_lib]]
+name = "Exercise"
+
+# Reference answers: must compile with no warnings at all.
+[[lean_lib]]
+name = "Solution"
+leanOptions = { warningAsError = true }
